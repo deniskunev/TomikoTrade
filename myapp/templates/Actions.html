@@ -1,0 +1,465 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomiko - Акции</title>
+    
+  <link rel="stylesheet" href="{% static "/styles/Actions.css" %}">
+    
+    <link rel="stylesheet" href="https://bootstraptema.ru/snippets/slider/2016/flexslider/flexslider.css" />
+    <link type="text/css" rel="stylesheet" href="css/lightgallery.css" />
+    <link rel="stylesheet" href="lightgallery.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://bootstraptema.ru/snippets/slider/2016/flexslider/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="https://bootstraptema.ru/snippets/slider/2016/flexslider/modernizr.js"></script>
+    <script type="text/javascript"
+        src="https://bootstraptema.ru/snippets/slider/2016/flexslider/jquery.mousewheel.js"></script>
+
+
+</head>
+
+
+
+
+
+
+
+
+
+    <header>
+        <div class="rectangleHead"></div>
+
+        <script src="js/lightgallery.min.js"></script>
+
+        <!-- lightgallery plugins -->
+        <script src="js/lg-thumbnail.min.js"></script>
+        <script src="js/lg-fullscreen.min.js"></script>
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/"><img src="{% static "image/image 2.png" %}" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/">Главная</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/catalog/">Авто из Японии</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact/">Контакты</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="header-right">
+                <a
+                    href="https://wa.me/79024896990?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%20%D0%B1%D1%8B%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BB%D0%BE%D1%82%D0%B0%20%D0%BF%D0%BE%D0%B4%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%D0%BE%D0%BC%20..."><span
+                        class="rock-text">8(800)-555-35-35</span></a>
+
+                <a
+                    href="https://wa.me/79024896990?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%20%D0%B1%D1%8B%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BB%D0%BE%D1%82%D0%B0%20%D0%BF%D0%BE%D0%B4%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%D0%BE%D0%BC%20...">
+                    <button class="WAT-btn">
+                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="36" height="36" rx="18" fill="white" fill-opacity="0.2" />
+                            <g clip-path="url(#clip0_75_514)">
+                                <path
+                                    d="M8.19843 27.9486C8.0862 27.8863 8.0019 27.7447 8 27.6151C7.99924 27.5631 8.35448 26.5975 8.78942 25.4693L9.58022 23.4181L9.45239 23.1978C9.21725 22.7925 8.74855 21.8084 8.60239 21.4131C8.41625 20.9096 8.18261 19.9771 8.09284 19.3794C8.0057 18.7991 7.99215 17.2963 8.06921 16.759C8.40129 14.4435 9.35944 12.488 10.9331 10.914C12.5052 9.34155 14.4855 8.36813 16.7573 8.0511C17.2455 7.98297 18.7715 7.98297 19.2598 8.0511C22.1853 8.45935 24.6729 9.98986 26.2938 12.3787C27.1526 13.6444 27.6759 15.0037 27.9275 16.6221C28.0151 17.1862 28.0258 18.7247 27.9459 19.262C27.6058 21.5467 26.6179 23.5459 25.0673 25.0875C22.6493 27.4914 19.2087 28.4905 15.8384 27.7674C14.9845 27.5842 13.7034 27.0757 12.9058 26.6034L12.7103 26.4876L10.5988 27.2436C9.43754 27.6594 8.44339 27.9998 8.38963 28C8.33586 28.0002 8.24982 27.977 8.19843 27.9486Z"
+                                    fill="white" fill-opacity="0.5" />
+                                <path
+                                    d="M22.3283 22.3119C22.0444 22.5926 21.7538 22.7717 21.3645 22.906C21.0005 23.0315 20.3499 23.0649 19.9633 22.9778C19.0625 22.7749 17.6831 22.0595 16.5029 21.1833C15.3876 20.3553 14.4274 19.1519 13.628 17.5803C13.0077 16.3608 12.8431 15.583 13.0413 14.8078C13.2593 13.9555 13.9313 13.2519 14.7602 13.0082C14.9107 12.964 15.1341 12.9458 15.5272 12.9458C16.0326 12.9458 16.0911 12.9531 16.1869 13.0285C16.2534 13.0808 16.467 13.4581 16.7684 14.0551L17.2447 14.9991L17.2434 15.3315C17.2422 15.6287 17.2275 15.695 17.1043 15.9573C17.0286 16.1187 16.8502 16.3949 16.708 16.5712L16.4493 16.8916L16.6328 17.2575C17.1098 18.2089 17.8135 18.9041 18.7874 19.3861L19.1171 19.5493L19.3412 19.347C19.8142 18.9201 20.2851 18.7148 20.7258 18.7436C20.9825 18.7604 21.058 18.7908 21.938 19.2322C22.4541 19.491 22.9116 19.7418 22.9546 19.7895C23.0236 19.8661 23.0343 19.9417 23.0454 20.4339C23.057 20.9515 23.0505 21.0137 22.9545 21.2998C22.8192 21.7028 22.6219 22.0217 22.3283 22.3119Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_75_514">
+                                    <rect width="20" height="20" fill="white" transform="translate(8 8)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                </a>
+
+                </button>
+                <a href="https://tlgg.ru/@Mottoooooo">
+                    <button class="WAT-btn">
+                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="36" height="36" rx="18" fill="white" fill-opacity="0.2" />
+                            <g clip-path="url(#clip0_75_507)">
+                                <path
+                                    d="M18 28C23.5228 28 28 23.5228 28 18C28 12.4772 23.5228 8 18 8C12.4772 8 8 12.4772 8 18C8 23.5228 12.4772 28 18 28Z"
+                                    fill="white" fill-opacity="0.5" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M12.5259 17.8945C15.4411 16.6244 17.385 15.787 18.3576 15.3825C21.1347 14.2274 21.7118 14.0267 22.0879 14.0201C22.1706 14.0186 22.3556 14.0391 22.4754 14.1364C22.5766 14.2184 22.6044 14.3293 22.6177 14.4072C22.6311 14.485 22.6477 14.6623 22.6345 14.8008C22.484 16.3821 21.8328 20.2193 21.5015 21.9903C21.3613 22.7397 21.0853 22.991 20.8181 23.0156C20.2374 23.069 19.7964 22.6318 19.234 22.2631C18.3538 21.6861 17.8566 21.327 17.0023 20.764C16.015 20.1134 16.655 19.7558 17.2177 19.1714C17.3649 19.0184 19.9236 16.6911 19.9731 16.48C19.9793 16.4536 19.9851 16.3552 19.9266 16.3032C19.8681 16.2513 19.7818 16.269 19.7195 16.2832C19.6313 16.3032 18.2253 17.2325 15.5015 19.0711C15.1024 19.3452 14.7409 19.4787 14.417 19.4717C14.06 19.464 13.3732 19.2698 12.8626 19.1039C12.2363 18.9003 11.7386 18.7927 11.7819 18.4469C11.8045 18.2669 12.0525 18.0827 12.5259 17.8945Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_75_507">
+                                    <rect width="20" height="20" fill="white" transform="translate(8 8)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                </a>
+
+                </button>
+
+
+            </div>
+
+    </header>
+
+    <body>
+
+    <!-- Модальное окно -->
+    <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body"
+                    style="display: flex; justify-content: center; align-items: center; position: relative; padding: 0;">
+                    <img src="{% static "image/example.png" %}" alt="modal-body" width="899" height="768">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="position: absolute; right: -170px; top: 20px;"></button>
+                    <span style="position: absolute; left: 10px; bottom: 10px; display: flex; align-items: center;">
+                        <button class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop2">Получить консультацию</button>
+                        <div style="margin-left: 10px; display: flex; align-items: center;">
+
+                            <a
+                                href="https://wa.me/79024896990?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%20%D0%B1%D1%8B%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BB%D0%BE%D1%82%D0%B0%20%D0%BF%D0%BE%D0%B4%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%D0%BE%D0%BC%20...">
+                                <button class="WAT-btn-modal">
+                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="36" height="36" rx="18" fill="white" fill-opacity="0.2" />
+                                        <g clip-path="url(#clip0_75_514)">
+                                            <path
+                                                d="M8.19843 27.9486C8.0862 27.8863 8.0019 27.7447 8 27.6151C7.99924 27.5631 8.35448 26.5975 8.78942 25.4693L9.58022 23.4181L9.45239 23.1978C9.21725 22.7925 8.74855 21.8084 8.60239 21.4131C8.41625 20.9096 8.18261 19.9771 8.09284 19.3794C8.0057 18.7991 7.99215 17.2963 8.06921 16.759C8.40129 14.4435 9.35944 12.488 10.9331 10.914C12.5052 9.34155 14.4855 8.36813 16.7573 8.0511C17.2455 7.98297 18.7715 7.98297 19.2598 8.0511C22.1853 8.45935 24.6729 9.98986 26.2938 12.3787C27.1526 13.6444 27.6759 15.0037 27.9275 16.6221C28.0151 17.1862 28.0258 18.7247 27.9459 19.262C27.6058 21.5467 26.6179 23.5459 25.0673 25.0875C22.6493 27.4914 19.2087 28.4905 15.8384 27.7674C14.9845 27.5842 13.7034 27.0757 12.9058 26.6034L12.7103 26.4876L10.5988 27.2436C9.43754 27.6594 8.44339 27.9998 8.38963 28C8.33586 28.0002 8.24982 27.977 8.19843 27.9486Z"
+                                                fill="white" fill-opacity="0.5" />
+                                            <path
+                                                d="M22.3283 22.3119C22.0444 22.5926 21.7538 22.7717 21.3645 22.906C21.0005 23.0315 20.3499 23.0649 19.9633 22.9778C19.0625 22.7749 17.6831 22.0595 16.5029 21.1833C15.3876 20.3553 14.4274 19.1519 13.628 17.5803C13.0077 16.3608 12.8431 15.583 13.0413 14.8078C13.2593 13.9555 13.9313 13.2519 14.7602 13.0082C14.9107 12.964 15.1341 12.9458 15.5272 12.9458C16.0326 12.9458 16.0911 12.9531 16.1869 13.0285C16.2534 13.0808 16.467 13.4581 16.7684 14.0551L17.2447 14.9991L17.2434 15.3315C17.2422 15.6287 17.2275 15.695 17.1043 15.9573C17.0286 16.1187 16.8502 16.3949 16.708 16.5712L16.4493 16.8916L16.6328 17.2575C17.1098 18.2089 17.8135 18.9041 18.7874 19.3861L19.1171 19.5493L19.3412 19.347C19.8142 18.9201 20.2851 18.7148 20.7258 18.7436C20.9825 18.7604 21.058 18.7908 21.938 19.2322C22.4541 19.491 22.9116 19.7418 22.9546 19.7895C23.0236 19.8661 23.0343 19.9417 23.0454 20.4339C23.057 20.9515 23.0505 21.0137 22.9545 21.2998C22.8192 21.7028 22.6219 22.0217 22.3283 22.3119Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_75_514">
+                                                <rect width="20" height="20" fill="white" transform="translate(8 8)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                            </a>
+
+                            </button>
+                            <a href="https://tlgg.ru/@Mottoooooo">
+                                <button class="WAT-btn-modal">
+                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="36" height="36" rx="18" fill="white" fill-opacity="0.2" />
+                                        <g clip-path="url(#clip0_75_507)">
+                                            <path
+                                                d="M18 28C23.5228 28 28 23.5228 28 18C28 12.4772 23.5228 8 18 8C12.4772 8 8 12.4772 8 18C8 23.5228 12.4772 28 18 28Z"
+                                                fill="white" fill-opacity="0.5" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M12.5259 17.8945C15.4411 16.6244 17.385 15.787 18.3576 15.3825C21.1347 14.2274 21.7118 14.0267 22.0879 14.0201C22.1706 14.0186 22.3556 14.0391 22.4754 14.1364C22.5766 14.2184 22.6044 14.3293 22.6177 14.4072C22.6311 14.485 22.6477 14.6623 22.6345 14.8008C22.484 16.3821 21.8328 20.2193 21.5015 21.9903C21.3613 22.7397 21.0853 22.991 20.8181 23.0156C20.2374 23.069 19.7964 22.6318 19.234 22.2631C18.3538 21.6861 17.8566 21.327 17.0023 20.764C16.015 20.1134 16.655 19.7558 17.2177 19.1714C17.3649 19.0184 19.9236 16.6911 19.9731 16.48C19.9793 16.4536 19.9851 16.3552 19.9266 16.3032C19.8681 16.2513 19.7818 16.269 19.7195 16.2832C19.6313 16.3032 18.2253 17.2325 15.5015 19.0711C15.1024 19.3452 14.7409 19.4787 14.417 19.4717C14.06 19.464 13.3732 19.2698 12.8626 19.1039C12.2363 18.9003 11.7386 18.7927 11.7819 18.4469C11.8045 18.2669 12.0525 18.0827 12.5259 17.8945Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_75_507">
+                                                <rect width="20" height="20" fill="white" transform="translate(8 8)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                            </a>
+
+                            </button>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="modal fade" id="staticBackdrop2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body" style="display: flex; justify-content: center; align-items: center; position: relative; padding: 0;">
+                    <img src="{% static "icons/Contact.png" %}" alt="modal-body" width="650" height="550" style="border-radius: 20px;">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right: -60px; top: 20px;"></button>
+                    <span style="position: absolute; left: 10px; bottom: 10px; display: flex; align-items: center;">
+                        <form id="application-form" method="post" action="{% url 'create_application' %}">
+                            {% csrf_token %}
+                            <div class="form-block-modal">
+                                <h2 class="h2-modal">Оставить заявку</h2>
+                                <p class="ost_modal">Оставьте заявку и менеджер отправит Вам актуальные варианты автомобилей под Ваши требования 👨‍💻</p>
+
+                                <!-- Поле Имя -->
+                                <label for="{{ form.name.id_for_label }}">Имя</label>
+                                {{ form.name }}
+
+                                <!-- Поле Телефон -->
+                                <label for="{{ form.phone.id_for_label }}">Телефон</label>
+                                {{ form.phone }}
+
+                                <!-- Поле Сообщение -->
+                                <label for="{{ form.message.id_for_label }}">Уточните свой вопрос</label>
+                                {{ form.message }}
+
+                                <h6 class="tetxForConf2">С правилами политики конфиденциальности ознакомлен</h6>
+                                <div class="Check2">
+                                    {{ form.privacy_agreed }}
+                                    <label for="privacy-checkbox"></label>
+                                </div>
+
+                                <div class="cbtn-send">
+                                    <button type="submit" class="btn-send2" id="submit-btn" disabled>Отправить</button>
+                                </div>
+                            </div>
+                        </form>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkbox = document.getElementById('privacy-checkbox'); // Исправленный ID
+            const submitBtn = document.getElementById('submit-btn');
+            const form = document.getElementById('application-form');
+
+            // Проверка состояния при загрузке
+            submitBtn.disabled = !checkbox.checked;
+
+            checkbox.addEventListener('change', function() {
+                submitBtn.disabled = !this.checked;
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitBtn.disabled = true;
+
+                fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Ошибка сети');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        const modalElement = document.getElementById('staticBackdrop2');
+                        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+
+                        // Полное уничтожение текущего экземпляра
+                        if (modalInstance) {
+                            modalInstance.hide();
+                            modalInstance.dispose(); // Важный шаг!
+                        }
+
+                        // Очистка бэкдропов и восстановление скролла
+                        document.body.classList.remove('modal-open');
+                        const backdrops = document.querySelectorAll('.modal-backdrop');
+                        backdrops.forEach(backdrop => backdrop.remove());
+
+                        // Создаем новый экземпляр модального окна
+                        new bootstrap.Modal(modalElement);
+
+                        // Сброс формы
+                        this.reset();
+
+                        alert('Успешно отправлено!');
+                    } else {
+                        throw new Error(data.errors || 'Ошибка сервера');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert(error.message);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                });
+            });
+        });
+    </script>
+
+
+
+
+    <main>
+        <div class="breadcrumbs">
+            <div class="container">
+                <a href="/">Главная</a> &gt; <a href="#">Акции</a>
+            </div>
+        </div>
+        <section class="container">
+            <h1>АКЦИИ</h1>
+
+            <div class="promo-block">
+                <div class="promo-block-content">
+                    <div class="title">
+                        <h2>ПРИВЕДИ ДРУГА👍</h2>
+                    </div>
+                    <p>Каждый третий клиент обращается к нам по рекомендации знакомых, друзей, родственников. Этот факт нас безумно радует, и в знак благодарности мы запустили акцию "Приведи друга".</p>
+                    <ol>
+                        <li>Вы рекомендуете нашу компанию;</li>
+                        <li>По вашей рекомендации человек заключает с нами договор на приобретение автомобиля;</li>
+                        <li>Вы получаете денежное вознаграждение или скидку на следующий заказ.</li>
+                    </ol>
+                    <p>Более подробную информацию можно узнать у наших менеджеров.</p>
+
+
+
+                    <button class="btn2-request" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop2">Получить консультацию</button>
+
+
+                </div>
+                <div class="promo-block-image">
+                    <img src="{% static "icons/Act1.png" %}" alt="Приведи друга">
+                </div>
+            </div>
+
+            <div class="promo-block">
+                 <div class="promo-block-content">
+                    <div class="title">
+                        <h2>ОПТОВЫЕ ЗАКАЗЫ 🚗🚗🚗</h2>
+                    </div>
+                     <p>Если вы планируете заказать сразу более 1 автомобиля, то для вас действует система лояльности - 10% скидка на комиссию компании на каждый последующий автомобиль в заказе.</p>
+
+                                         <button class="btn-request" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop2">Оставить заявку</button>
+
+                </div>
+                <div class="promo-block-image car-img">
+                    <img src="{% static "icons/Act2.png" %}" alt="Оптовые заказы">
+                </div>
+            </div>
+
+            <div class="promo-block">
+                <div class="promo-block-content">
+                    <div class="title">
+                        <h2>ОПЛАТА ДЕПОЗИТА ДВУМЯ ЧАСТЯМИ 💰</h2>
+                    </div>
+                    <p>За долгие годы работы мы выработали для вас идвальную схему работы. Представьте, что Мы нашли для вас идеальный вариант автомобиля, но у вас нет полной суммы для оплаты депозита на руках.</p>
+                    <p>Не проблема! В нашей компании вы может оплатить депозит частями. Первую часть депозита оплачиваете в момент заключения договора, вторую - после покупки автомобиля.</p>
+                    <p>Важно уточнить, что конечная цена от этого не изменится. Делаем все для вашего удобства и доверия.</p>
+
+                                                   <button class="btn3-request" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop2">Оставить заявку</button>
+                </div>
+               <div class="payment-info">
+                       <div class="country">
+                        <img src="{% static "icons/Act3.png" %}" alt="Япония">
+                      </div>
+                   </div>
+               </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+
+
+    <footer class="footer">
+        <div class="AllObj">
+            
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="{% static "image/image 2.png" %}">
+    
+                </div>
+                <div class="footer-links">
+                    <div class="catalog">
+                        <h4>КАТАЛОГ</h4>
+                        <ul class="footerAuto">
+                            <a class="nav-link" href="/catalog/">Авто из Японии</a>
+                        </ul>
+                    </div>
+                    <div class="company">
+                        <h4>КОМПАНИЯ</h4>
+                        <ul>
+                            <a href="/contact/">О компании</a>
+                            <a href="/Send/">Доставка</a>
+                            <a href="#">Отзывы</a>
+    
+    
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footFoot">
+    
+                <p>© 2024 ООО «Правый руль» Автомобили под заказ из Кореи, Китая и Японии</p>
+    
+            </div>
+        
+        <div class="footer-bottom">
+            <p>Звонок по России бесплатный: </p>
+            <p class="NumFoot"><strong>8 800 550 48 32</strong></p>
+    
+            <div class="social-icons">
+                <a href="https://t.me/ElliPhotos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z" fill="white" fill-opacity="0.3"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.43104 11.873C8.92928 10.3488 11.262 9.34403 12.4292 8.85856C15.7617 7.47245 16.4542 7.23167 16.9055 7.22372C17.0048 7.22197 17.2267 7.24657 17.3705 7.36323C17.4919 7.46174 17.5253 7.59481 17.5413 7.68821C17.5573 7.78161 17.5772 7.99436 17.5614 8.16061C17.3808 10.0581 16.5994 14.6628 16.2018 16.788C16.0336 17.6873 15.7024 17.9888 15.3817 18.0183C14.6849 18.0824 14.1557 17.5577 13.4808 17.1153C12.4246 16.423 11.8279 15.992 10.8028 15.3164C9.61798 14.5357 10.386 14.1066 11.0612 13.4053C11.2379 13.2217 14.3083 10.429 14.3677 10.1756C14.3752 10.144 14.3821 10.0258 14.3119 9.96348C14.2417 9.90112 14.1382 9.92244 14.0635 9.93941C13.9575 9.96345 12.2703 11.0786 9.00179 13.285C8.52287 13.6138 8.08909 13.7741 7.70043 13.7657C7.27197 13.7564 6.44778 13.5234 5.83508 13.3242C5.08358 13.08 4.4863 12.9508 4.53831 12.5359C4.5654 12.3199 4.86298 12.0989 5.43104 11.873Z" fill="white"/>
+                    </svg>
+                    </a>
+                <a href="https://t.me/ElliPhotos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_75_1013" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
+                    <path d="M23.8815 0H0.119141V24H23.8815V0Z" fill="white"/>
+                    </mask>
+                    <g mask="url(#mask0_75_1013)">
+                    <path d="M0.119141 11.52C0.119141 6.08942 0.119141 3.37414 1.7895 1.68707C3.45987 0 6.14827 0 11.5251 0H12.4756C17.8524 0 20.5408 0 22.2112 1.68707C23.8815 3.37414 23.8815 6.08942 23.8815 11.52V12.48C23.8815 17.9106 23.8815 20.6259 22.2112 22.3129C20.5408 24 17.8524 24 12.4756 24H11.5251C6.14827 24 3.45987 24 1.7895 22.3129C0.119141 20.6259 0.119141 17.9106 0.119141 12.48V11.52Z" fill="white" fill-opacity="0.3"/>
+                    <path d="M12.7626 17.2898C7.34671 17.2898 4.25763 13.5398 4.12891 7.2998H6.84179C6.93089 11.8798 8.93085 13.8198 10.515 14.2198V7.2998H13.0695V11.2498C14.6339 11.0798 16.2773 9.2798 16.8317 7.2998H19.3863C18.9605 9.73981 17.1783 11.5398 15.911 12.2798C17.1783 12.8798 19.2081 14.4498 19.9804 17.2898H17.1684C16.5645 15.3898 15.0596 13.9198 13.0695 13.7198V17.2898H12.7626Z" fill="white"/>
+                    </g>
+                    </svg>
+                    </a>
+                <a href="https://t.me/ElliPhotos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.0293 0H11.9746C5.3623 0 0.00195312 5.36035 0.00195312 11.9727V12.0273C0.00195312 18.6397 5.3623 24 11.9746 24H12.0293C18.6416 24 24.002 18.6397 24.002 12.0273V11.9727C24.002 5.36035 18.6416 0 12.0293 0Z" fill="white" fill-opacity="0.3"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7124 4.88281H8.28613C6.23449 4.88281 4.56543 6.55187 4.56543 8.60351V15.3975C4.56543 17.4491 6.23449 19.1182 8.28613 19.1182H15.7124C17.764 19.1182 19.4331 17.4491 19.4331 15.3975V8.60351C19.4331 6.55187 17.764 4.88281 15.7124 4.88281ZM5.87798 8.60351C5.87798 7.27583 6.95845 6.19536 8.28613 6.19536H15.7124C17.0401 6.19536 18.1206 7.27583 18.1206 8.60351V15.3975C18.1206 16.7252 17.0401 17.8056 15.7124 17.8056H8.28613C6.95845 17.8056 5.87798 16.7252 5.87798 15.3975V8.60351ZM11.9999 15.4608C13.9078 15.4608 15.4608 13.9086 15.4608 11.9999C15.4608 10.0912 13.9086 8.53906 11.9999 8.53906C10.0912 8.53906 8.53906 10.0912 8.53906 11.9999C8.53906 13.9086 10.0912 15.4608 11.9999 15.4608ZM11.9999 9.85245C13.1847 9.85245 14.1483 10.816 14.1483 12.0008C14.1483 13.1855 13.1847 14.1491 11.9999 14.1491C10.8152 14.1491 9.85161 13.1855 9.85161 12.0008C9.85161 10.816 10.8152 9.85245 11.9999 9.85245ZM16.714 8.16589C16.714 8.68048 16.2954 9.09838 15.7818 9.09838C15.2674 9.09838 14.8496 8.68048 14.8496 8.16589C14.8496 7.6513 15.2674 7.2334 15.7818 7.2334C16.2963 7.2334 16.714 7.6513 16.714 8.16589Z" fill="white"/>
+                    </svg>
+                    </a>
+                    
+    
+            </div>
+            <div class="polcol">
+                <span>Политика конфиденциальности</span>
+                </div>
+                
+        </div>
+    
+    </div>
+    
+    </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+
+</html>

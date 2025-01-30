@@ -1,0 +1,956 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Car Catalog</title>
+
+    <link rel="stylesheet" href="{% static "/styles/catalog.css" %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://bootstraptema.ru/snippets/slider/2016/flexslider/flexslider.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://bootstraptema.ru/snippets/slider/2016/flexslider/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="https://bootstraptema.ru/snippets/slider/2016/flexslider/modernizr.js"></script>
+    <script type="text/javascript"
+        src="https://bootstraptema.ru/snippets/slider/2016/flexslider/jquery.mousewheel.js"></script>
+</head>
+
+<body>
+
+    <!-- Модальное окно -->
+    <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body"
+                    style="display: flex; justify-content: center; align-items: center; position: relative; padding: 0;">
+                    <img src="{% static "image/example.png" %}" alt="modal-body" width="899" height="768">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="position: absolute; right: -170px; top: 20px;"></button>
+                    <span style="position: absolute; left: 10px; bottom: 10px; display: flex; align-items: center;">
+                        <button class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop2">Получить консультацию</button>
+                        <div style="margin-left: 10px; display: flex; align-items: center;">
+
+                            <a
+                                href="https://wa.me/79024896990?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%20%D0%B1%D1%8B%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BB%D0%BE%D1%82%D0%B0%20%D0%BF%D0%BE%D0%B4%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%D0%BE%D0%BC%20...">
+                                <button class="WAT-btn-modal">
+                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="36" height="36" rx="18" fill="white" fill-opacity="0.2" />
+                                        <g clip-path="url(#clip0_75_514)">
+                                            <path
+                                                d="M8.19843 27.9486C8.0862 27.8863 8.0019 27.7447 8 27.6151C7.99924 27.5631 8.35448 26.5975 8.78942 25.4693L9.58022 23.4181L9.45239 23.1978C9.21725 22.7925 8.74855 21.8084 8.60239 21.4131C8.41625 20.9096 8.18261 19.9771 8.09284 19.3794C8.0057 18.7991 7.99215 17.2963 8.06921 16.759C8.40129 14.4435 9.35944 12.488 10.9331 10.914C12.5052 9.34155 14.4855 8.36813 16.7573 8.0511C17.2455 7.98297 18.7715 7.98297 19.2598 8.0511C22.1853 8.45935 24.6729 9.98986 26.2938 12.3787C27.1526 13.6444 27.6759 15.0037 27.9275 16.6221C28.0151 17.1862 28.0258 18.7247 27.9459 19.262C27.6058 21.5467 26.6179 23.5459 25.0673 25.0875C22.6493 27.4914 19.2087 28.4905 15.8384 27.7674C14.9845 27.5842 13.7034 27.0757 12.9058 26.6034L12.7103 26.4876L10.5988 27.2436C9.43754 27.6594 8.44339 27.9998 8.38963 28C8.33586 28.0002 8.24982 27.977 8.19843 27.9486Z"
+                                                fill="white" fill-opacity="0.5" />
+                                            <path
+                                                d="M22.3283 22.3119C22.0444 22.5926 21.7538 22.7717 21.3645 22.906C21.0005 23.0315 20.3499 23.0649 19.9633 22.9778C19.0625 22.7749 17.6831 22.0595 16.5029 21.1833C15.3876 20.3553 14.4274 19.1519 13.628 17.5803C13.0077 16.3608 12.8431 15.583 13.0413 14.8078C13.2593 13.9555 13.9313 13.2519 14.7602 13.0082C14.9107 12.964 15.1341 12.9458 15.5272 12.9458C16.0326 12.9458 16.0911 12.9531 16.1869 13.0285C16.2534 13.0808 16.467 13.4581 16.7684 14.0551L17.2447 14.9991L17.2434 15.3315C17.2422 15.6287 17.2275 15.695 17.1043 15.9573C17.0286 16.1187 16.8502 16.3949 16.708 16.5712L16.4493 16.8916L16.6328 17.2575C17.1098 18.2089 17.8135 18.9041 18.7874 19.3861L19.1171 19.5493L19.3412 19.347C19.8142 18.9201 20.2851 18.7148 20.7258 18.7436C20.9825 18.7604 21.058 18.7908 21.938 19.2322C22.4541 19.491 22.9116 19.7418 22.9546 19.7895C23.0236 19.8661 23.0343 19.9417 23.0454 20.4339C23.057 20.9515 23.0505 21.0137 22.9545 21.2998C22.8192 21.7028 22.6219 22.0217 22.3283 22.3119Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_75_514">
+                                                <rect width="20" height="20" fill="white" transform="translate(8 8)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                            </a>
+
+                            </button>
+                            <a href="https://tlgg.ru/@Mottoooooo">
+                                <button class="WAT-btn-modal">
+                                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect width="36" height="36" rx="18" fill="white" fill-opacity="0.2" />
+                                        <g clip-path="url(#clip0_75_507)">
+                                            <path
+                                                d="M18 28C23.5228 28 28 23.5228 28 18C28 12.4772 23.5228 8 18 8C12.4772 8 8 12.4772 8 18C8 23.5228 12.4772 28 18 28Z"
+                                                fill="white" fill-opacity="0.5" />
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M12.5259 17.8945C15.4411 16.6244 17.385 15.787 18.3576 15.3825C21.1347 14.2274 21.7118 14.0267 22.0879 14.0201C22.1706 14.0186 22.3556 14.0391 22.4754 14.1364C22.5766 14.2184 22.6044 14.3293 22.6177 14.4072C22.6311 14.485 22.6477 14.6623 22.6345 14.8008C22.484 16.3821 21.8328 20.2193 21.5015 21.9903C21.3613 22.7397 21.0853 22.991 20.8181 23.0156C20.2374 23.069 19.7964 22.6318 19.234 22.2631C18.3538 21.6861 17.8566 21.327 17.0023 20.764C16.015 20.1134 16.655 19.7558 17.2177 19.1714C17.3649 19.0184 19.9236 16.6911 19.9731 16.48C19.9793 16.4536 19.9851 16.3552 19.9266 16.3032C19.8681 16.2513 19.7818 16.269 19.7195 16.2832C19.6313 16.3032 18.2253 17.2325 15.5015 19.0711C15.1024 19.3452 14.7409 19.4787 14.417 19.4717C14.06 19.464 13.3732 19.2698 12.8626 19.1039C12.2363 18.9003 11.7386 18.7927 11.7819 18.4469C11.8045 18.2669 12.0525 18.0827 12.5259 17.8945Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_75_507">
+                                                <rect width="20" height="20" fill="white" transform="translate(8 8)" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                            </a>
+
+                            </button>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="modal fade" id="staticBackdrop2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body" style="display: flex; justify-content: center; align-items: center; position: relative; padding: 0;">
+                    <img src="{% static "icons/Contact.png" %}" alt="modal-body" width="650" height="550" style="border-radius: 20px;">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="position: absolute; right: -60px; top: 20px;"></button>
+                    <span style="position: absolute; left: 10px; bottom: 10px; display: flex; align-items: center;">
+                        <form id="application-form" method="post" action="{% url 'create_application' %}">
+                            {% csrf_token %}
+                            <div class="form-block-modal">
+                                <h2 class="h2-modal">Оставить заявку</h2>
+                                <p class="ost_modal">Оставьте заявку и менеджер отправит Вам актуальные варианты автомобилей под Ваши требования 👨‍💻</p>
+
+                                <!-- Поле Имя -->
+                                <label for="{{ form.name.id_for_label }}">Имя</label>
+                                {{ form.name }}
+
+                                <!-- Поле Телефон -->
+                                <label for="{{ form.phone.id_for_label }}">Телефон</label>
+                                {{ form.phone }}
+
+                                <!-- Поле Сообщение -->
+                                <label for="{{ form.message.id_for_label }}">Уточните свой вопрос</label>
+                                {{ form.message }}
+
+                                <h6 class="tetxForConf2">С правилами политики конфиденциальности ознакомлен</h6>
+                                <div class="Check2">
+                                    {{ form.privacy_agreed }}
+                                    <label for="privacy-checkbox"></label>
+                                </div>
+
+                                <div class="cbtn-send">
+                                    <button type="submit" class="btn-send2" id="submit-btn" disabled>Отправить</button>
+                                </div>
+                            </div>
+                        </form>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkbox = document.getElementById('privacy-checkbox'); // Исправленный ID
+            const submitBtn = document.getElementById('submit-btn');
+            const form = document.getElementById('application-form');
+
+            // Проверка состояния при загрузке
+            submitBtn.disabled = !checkbox.checked;
+
+            checkbox.addEventListener('change', function() {
+                submitBtn.disabled = !this.checked;
+            });
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitBtn.disabled = true;
+
+                fetch(this.action, {
+                    method: 'POST',
+                    body: new FormData(this),
+                    headers: {
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('Ошибка сети');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        const modalElement = document.getElementById('staticBackdrop2');
+                        const modalInstance = bootstrap.Modal.getInstance(modalElement);
+
+                        // Полное уничтожение текущего экземпляра
+                        if (modalInstance) {
+                            modalInstance.hide();
+                            modalInstance.dispose(); // Важный шаг!
+                        }
+
+                        // Очистка бэкдропов и восстановление скролла
+                        document.body.classList.remove('modal-open');
+                        const backdrops = document.querySelectorAll('.modal-backdrop');
+                        backdrops.forEach(backdrop => backdrop.remove());
+
+                        // Создаем новый экземпляр модального окна
+                        new bootstrap.Modal(modalElement);
+
+                        // Сброс формы
+                        this.reset();
+
+                        alert('Успешно отправлено!');
+                    } else {
+                        throw new Error(data.errors || 'Ошибка сервера');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert(error.message);
+                })
+                .finally(() => {
+                    submitBtn.disabled = false;
+                });
+            });
+        });
+    </script>
+
+
+
+
+    <header>
+        <div class="rectangleHead"></div>
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="/"><img src="{% static "image/image 2.png" %}" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="/">Главная</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/catalog/">Авто из Японии</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/contact/">Контакты</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="header-right">
+                <a
+                    href="https://wa.me/79024896990?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%20%D0%B1%D1%8B%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BB%D0%BE%D1%82%D0%B0%20%D0%BF%D0%BE%D0%B4%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%D0%BE%D0%BC%20..."><span
+                        class="rock-text">8(800)-555-35-35</span></a>
+
+                <a
+                    href="https://wa.me/79024896990?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5%21%20%D0%AF%20%D1%85%D0%BE%D1%82%D0%B5%D0%BB%20%D0%B1%D1%8B%20%D1%80%D0%B0%D1%81%D1%81%D1%87%D0%B8%D1%82%D0%B0%D1%82%D1%8C%20%D1%81%D1%82%D0%BE%D0%B8%D0%BC%D0%BE%D1%81%D1%82%D1%8C%20%D0%BB%D0%BE%D1%82%D0%B0%20%D0%BF%D0%BE%D0%B4%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%D0%BE%D0%BC%20...">
+                    <button class="WAT-btn">
+                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="36" height="36" rx="18" fill="white" fill-opacity="0.2" />
+                            <g clip-path="url(#clip0_75_514)">
+                                <path
+                                    d="M8.19843 27.9486C8.0862 27.8863 8.0019 27.7447 8 27.6151C7.99924 27.5631 8.35448 26.5975 8.78942 25.4693L9.58022 23.4181L9.45239 23.1978C9.21725 22.7925 8.74855 21.8084 8.60239 21.4131C8.41625 20.9096 8.18261 19.9771 8.09284 19.3794C8.0057 18.7991 7.99215 17.2963 8.06921 16.759C8.40129 14.4435 9.35944 12.488 10.9331 10.914C12.5052 9.34155 14.4855 8.36813 16.7573 8.0511C17.2455 7.98297 18.7715 7.98297 19.2598 8.0511C22.1853 8.45935 24.6729 9.98986 26.2938 12.3787C27.1526 13.6444 27.6759 15.0037 27.9275 16.6221C28.0151 17.1862 28.0258 18.7247 27.9459 19.262C27.6058 21.5467 26.6179 23.5459 25.0673 25.0875C22.6493 27.4914 19.2087 28.4905 15.8384 27.7674C14.9845 27.5842 13.7034 27.0757 12.9058 26.6034L12.7103 26.4876L10.5988 27.2436C9.43754 27.6594 8.44339 27.9998 8.38963 28C8.33586 28.0002 8.24982 27.977 8.19843 27.9486Z"
+                                    fill="white" fill-opacity="0.5" />
+                                <path
+                                    d="M22.3283 22.3119C22.0444 22.5926 21.7538 22.7717 21.3645 22.906C21.0005 23.0315 20.3499 23.0649 19.9633 22.9778C19.0625 22.7749 17.6831 22.0595 16.5029 21.1833C15.3876 20.3553 14.4274 19.1519 13.628 17.5803C13.0077 16.3608 12.8431 15.583 13.0413 14.8078C13.2593 13.9555 13.9313 13.2519 14.7602 13.0082C14.9107 12.964 15.1341 12.9458 15.5272 12.9458C16.0326 12.9458 16.0911 12.9531 16.1869 13.0285C16.2534 13.0808 16.467 13.4581 16.7684 14.0551L17.2447 14.9991L17.2434 15.3315C17.2422 15.6287 17.2275 15.695 17.1043 15.9573C17.0286 16.1187 16.8502 16.3949 16.708 16.5712L16.4493 16.8916L16.6328 17.2575C17.1098 18.2089 17.8135 18.9041 18.7874 19.3861L19.1171 19.5493L19.3412 19.347C19.8142 18.9201 20.2851 18.7148 20.7258 18.7436C20.9825 18.7604 21.058 18.7908 21.938 19.2322C22.4541 19.491 22.9116 19.7418 22.9546 19.7895C23.0236 19.8661 23.0343 19.9417 23.0454 20.4339C23.057 20.9515 23.0505 21.0137 22.9545 21.2998C22.8192 21.7028 22.6219 22.0217 22.3283 22.3119Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_75_514">
+                                    <rect width="20" height="20" fill="white" transform="translate(8 8)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                </a>
+
+                </button>
+                <a href="https://tlgg.ru/@Mottoooooo">
+                    <button class="WAT-btn">
+                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="36" height="36" rx="18" fill="white" fill-opacity="0.2" />
+                            <g clip-path="url(#clip0_75_507)">
+                                <path
+                                    d="M18 28C23.5228 28 28 23.5228 28 18C28 12.4772 23.5228 8 18 8C12.4772 8 8 12.4772 8 18C8 23.5228 12.4772 28 18 28Z"
+                                    fill="white" fill-opacity="0.5" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M12.5259 17.8945C15.4411 16.6244 17.385 15.787 18.3576 15.3825C21.1347 14.2274 21.7118 14.0267 22.0879 14.0201C22.1706 14.0186 22.3556 14.0391 22.4754 14.1364C22.5766 14.2184 22.6044 14.3293 22.6177 14.4072C22.6311 14.485 22.6477 14.6623 22.6345 14.8008C22.484 16.3821 21.8328 20.2193 21.5015 21.9903C21.3613 22.7397 21.0853 22.991 20.8181 23.0156C20.2374 23.069 19.7964 22.6318 19.234 22.2631C18.3538 21.6861 17.8566 21.327 17.0023 20.764C16.015 20.1134 16.655 19.7558 17.2177 19.1714C17.3649 19.0184 19.9236 16.6911 19.9731 16.48C19.9793 16.4536 19.9851 16.3552 19.9266 16.3032C19.8681 16.2513 19.7818 16.269 19.7195 16.2832C19.6313 16.3032 18.2253 17.2325 15.5015 19.0711C15.1024 19.3452 14.7409 19.4787 14.417 19.4717C14.06 19.464 13.3732 19.2698 12.8626 19.1039C12.2363 18.9003 11.7386 18.7927 11.7819 18.4469C11.8045 18.2669 12.0525 18.0827 12.5259 17.8945Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_75_507">
+                                    <rect width="20" height="20" fill="white" transform="translate(8 8)" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+
+                </a>
+
+                </button>
+
+
+            </div>
+        </header>
+
+
+       <form method="GET" action="{% url 'catalog' %}">
+    <section class="catalog-section">
+        <div class="container">
+            <h1 class="catalog-title">АВТОМОБИЛИ ИЗ ЯПОНИИ <img src="{% static "icons/flagjapan.png" %}" alt="Japanese flag"></h1>
+            <div class="filter-form">
+                <!-- Первый столбец фильтров -->
+                <div class="filter-col">
+                    <div class="form-group">
+                        <label for="car-brand">Марка авто</label>
+                        <select class="form-control" name="brand" id="brand">
+                            <option value="">All</option>
+                            {% for brand in brands %}
+                            <option value="{{ brand.id }}" {% if brand.id == selected_brand %}selected{% endif %}>
+                                {{ brand.brand }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="model">Модель авто</label>
+                        <select class="form-control" name="model" id="model">
+                            <option value="">All</option>
+                            {% for model in models %}
+                            <option value="{{ model }}" {% if model == selected_model %}selected{% endif %}>
+                                {{ model }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Второй столбец фильтров -->
+                <div class="filter-col">
+                    <div class="form-group">
+                        <label for="year_min">Год от</label>
+                        <input type="number" class="form-control" name="year_min" value="{{ year_min }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="year_max">до</label>
+                        <input type="number" class="form-control" name="year_max" value="{{ year_max }}">
+                    </div>
+                </div>
+
+                <!-- Третий столбец фильтров -->
+                <div class="filter-col">
+                    <div class="form-group">
+                        <label for="engine_volume_min">Объем от, л</label>
+                        <input type="number" step="0.1" class="form-control" name="engine_volume_min"
+                            value="{{ engine_volume_min }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="engine_volume_max">до</label>
+                        <input type="number" step="0.1" class="form-control" name="engine_volume_max"
+                            value="{{ engine_volume_max }}">
+                    </div>
+                </div>
+
+                <!-- Четвертый столбец фильтров -->
+                <div class="filter-col">
+                    <div class="form-group">
+                        <label for="drive">Привод</label>
+                        <select class="form-control" name="drive">
+                            <option value="">All</option>
+                            {% for drive in drives %}
+                            <option value="{{ drive }}" {% if drive == selected_drive %}selected{% endif %}>
+                                {{ drive }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Цвет</label>
+                        <select class="form-control" name="color">
+                            <option value="">All</option>
+                            {% for color in colors %}
+                            <option value="{{ color }}" {% if color == selected_color %}selected{% endif %}>
+                                {{ color }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Пятый столбец фильтров -->
+                <div class="filter-col">
+                    <div class="form-group">
+                        <label for="mileage_min">Пробег от, км</label>
+                        <input type="number" class="form-control" name="mileage_min" value="{{ mileage_min }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="mileage_max">до</label>
+                        <input type="number" class="form-control" name="mileage_max" value="{{ mileage_max }}">
+                    </div>
+                </div>
+
+                <!-- Шестой столбец фильтров -->
+                <div class="filter-col">
+                    <div class="form-group">
+                        <label for="transmission">Тип КПП</label>
+                        <select class="form-control" name="transmission">
+                            <option value="">All</option>
+                            {% for transmission in transmissions %}
+                            <option value="{{ transmission }}" {% if transmission == selected_transmission %}selected{% endif %}>
+                                {{ transmission }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Кнопки -->
+                <button type="submit" class="search-button">Показать</button>
+                <a href="{% url 'catalog' %}" class="btn btn-secondary">Сбросить фильтры</a>
+            </div>
+        </div>
+    </section>
+</form>
+
+<div class="modal fade" id="staticBackdrop2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body"
+                    style="display: flex; justify-content: center; align-items: center; position: relative; padding: 0;">
+                    <img src="{% static "icons/Contact.png" %}" alt="modal-body" width="650" height="550" style="border-radius: 20px;">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="position: absolute; right: -60px; top: 20px;"></button>
+                    <span style="position: absolute; left: 10px; bottom: 10px; display: flex; align-items: center;">
+                        <div class="form-block-modal">
+                            <h2 class="h2-modal">Оставить заявку</h2>
+                            <p class="ost_modal">Оставьте заявку и менеджер отправит Вам актуальные варианты автомобилей
+                                под Ваши требования 👨‍💻</p>
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" placeholder="Введите имя">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" placeholder="+7">
+                            <label for="message">Уточните свой вопрос</label>
+                            <textarea id="message"
+                                placeholder="Введите текст сообщения, укажите страну, марку и год машины."></textarea>
+
+                            <h6 class="tetxForConf2">С правилами политики
+                                конфиденциальности ознакомлен</h6>
+                            <div class="Check2">
+                                <label><input type="checkbox" id="privacy"></label>
+                            </div>
+
+                            <div class="cbtn-send">
+                                <button class="btn-send2">Отправить</button>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+      <div class="popular-cars">
+                    <h2></h2>
+
+
+
+                    <div class="slider-container">
+                        <div class="slider-titles">
+                            <h2 class="slider-title">АВТО <img src="{% static "icons/carsmall.png" %}" alt="Fire"></h2>
+                            <h2 class="slider-title2">ПОПУЛЯРНЫЕ</h2>
+                        </div>
+
+                        <div class="slider">
+                            <div class="slides">
+                                <div class="slide active">
+                                    <div class="card"> <!-- Изменяем cardActive на card -->
+                                        <div class="card-header">
+                                            <h5 class="textcardhead">SUBARU LEVORG VN5</h5>
+                                        </div>
+                                        <a href="/project/">
+                                            <img src="{% static "image/image 26.png" %}" alt="Автомобиль 1">
+                                        </a>
+                                        <div class="card-footer"> <!-- Добавляем заголовок цены в footer -->
+                                            <h5 class="textcardfoot">Цена: 1 000 000 р.</h5>
+                                            <!-- Изменяем текст на заголовок -->
+                                        </div>
+
+                                        <button class="btn btn-successs" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">ОСТАВИТЬ ЗАЯВКУ</button>
+
+                                    </div>
+                                </div>
+                                <div class="slide">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="textcardhead">SUBARU LEVORG VN5</h5>
+                                        </div>
+                                        <a href="/project/">
+                                            <img src="{% static "image/forester.jpg" %}" alt="Автомобиль 2">
+                                        </a>
+                                        <div class="card-footer">
+                                            <h5 class="textcardfoot">1 200 470 р.</h5>
+
+                                        </div>
+                                        <button class="btn btn-successs" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">ОСТАВИТЬ ЗАЯВКУ</button>
+                                    </div>
+                                </div>
+                                <div class="slide">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="textcardhead">SUBARU LEVORG VN5</h5>
+                                        </div>
+                                        <a href="/project/">
+                                            <img src="{% static "image/image 26.png" %}" alt="Автомобиль 3">
+                                        </a>
+                                        <div class="card-footer">
+                                            <h5 class="textcardfoot">1 200 470 р.</h5>
+
+                                        </div>
+                                        <button class="btn btn-successs" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">ОСТАВИТЬ ЗАЯВКУ</button>
+                                    </div>
+                                </div>
+                                <div class="slide">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="textcardhead">SUBARU LEVORG VN5</h5>
+                                        </div>
+                                        <a href="/project/">
+                                            <img src="{% static "image/forester.jpg" %}" alt="Автомобиль 4">
+                                        </a>
+                                        <div class="card-footer">
+                                            <h5 class="textcardfoot">1 200 470 р.</h5>
+
+                                        </div>
+                                        <button class="btn btn-successs" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">ОСТАВИТЬ ЗАЯВКУ</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+                        </div>
+                        <p class="slider-description"></p>
+                    </div>
+          </div>
+                    <script>
+                        let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+            slide.classList.add('active');
+        }
+    });
+
+    const offset = -index * (100 / 2.2); // С расчетом на 3 карточки
+    document.querySelector('.slides').style.transform = `translateX(${offset}%)`;
+}
+
+function changeSlide(direction) {
+  currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    showSlide(currentSlide);
+}
+
+                    </script>
+
+
+        <div class="rowS">
+            <div class="col-md-6">
+                <label for="sort">Сортировать:</label>
+                <form method="GET" action="{% url 'catalog' %}" id="sort-form">
+                    <div class="row g-2">
+                        <div class="col">
+                            <select class="form-control" name="sort_field" id="sort-field">
+                                <option value="mileage" {% if sort_field == 'mileage' %}selected{% endif %}>Пробег</option>
+                                <option value="price" {% if sort_field == 'price' %}selected{% endif %}>Цена</option>
+                                <option value="engine_volume" {% if sort_field == 'engine_volume' %}selected{% endif %}>Мощность</option>
+                                <option value="year" {% if sort_field == 'year' %}selected{% endif %}>Год</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select class="form-control" name="sort_order" id="sort-order">
+                                <div class="sorting">
+                                <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>По возрастанию</option>
+                                    </div>
+                                 <div class="sorting">
+                                <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>По убыванию</option>
+                                     </div>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    <!-- Vehicle Cards -->
+        <div class="row">
+    {% for vehicle in vehicles %}
+    <div class="col-md-3">
+        <a href="/project/" class="car-link">
+            <div class="car-item">
+                <img src="{{ vehicle.avatar.image.url }}" class="main-img" alt="Vehicle Image">
+                <div class="car-details">
+                    <h3 class="car-name">{{ vehicle.brand_country.brand }} {{ vehicle.model }}</h3>
+                    <p class="car-info">{{ vehicle.year }} · {{ vehicle.transmission }} · {{ vehicle.mileage }} км</p>
+                    <p class="car-price">{{ vehicle.total_price|floatformat:0}} P</p>
+                </div>
+                <button class="request-button" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop2">ОСТАВИТЬ ЗАЯВКУ</button>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+
+        <!-- Pagination -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?{{ get_params }}&page=1">Первая</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?{{ get_params }}&page={{ page_obj.previous_page_number }}">Предыдущий</a>
+                </li>
+                {% endif %}
+                {% for page_num in page_range %}
+                <li class="page-item {% if page_obj.number == page_num %}active{% endif %}">
+                    <a class="page-link" href="?{{ get_params }}&page={{ page_num }}">{{ page_num }}</a>
+                </li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?{{ get_params }}&page={{ page_obj.next_page_number }}">Следующая</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?{{ get_params }}&page={{ page_obj.paginator.num_pages }}">Последняя</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const brandSelect = document.getElementById('brand');
+            const modelSelect = document.getElementById('model');
+
+            const updateModels = async (brandId) => {
+                modelSelect.innerHTML = '<option value="">All</option>';
+                modelSelect.disabled = true;
+
+                if (!brandId) return;
+
+                try {
+                    const response = await fetch(`/get_models/?brand_id=${brandId}`);
+                    if (!response.ok) throw new Error('Ошибка сервера');
+
+                    const { models } = await response.json();
+                    modelSelect.disabled = false;
+
+                    models.forEach(model => {
+                        const option = new Option(model, model);
+                        modelSelect.add(option);
+                    });
+
+                    // Восстановление выбранного значения из URL
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const savedModel = urlParams.get('model');
+                    if (savedModel && models.includes(savedModel)) {
+                        modelSelect.value = savedModel;
+                    }
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    modelSelect.disabled = true;
+                }
+            };
+
+            // Инициализация при загрузке
+            updateModels(brandSelect.value);
+
+            // Обработчик изменения бренда
+            brandSelect.addEventListener('change', () => {
+                modelSelect.value = '';
+                updateModels(brandSelect.value);
+            });
+        });
+        </script>
+
+
+                <div class="contact-form-block">
+                    <div class="contact-info-block">
+                        <div class="contact-info-title"><strong></strong>
+                            <br><span><strong>КОНТАКТНАЯ ИНФОРМАЦИЯ</strong></span> 👋
+                        </div>
+                        <img src="{% static "icons/Contact.png" %}" alt="Картинка" class="background-image">
+                        <p>Оставьте свою заявку и наш менеджер свяжется с Вами для уточнения деталей.</p>
+                        <div class="contact-info-details">
+                            <p>Звонок по России бесплатный</p>
+                            <p>8 800 550 48 32</p>
+                            <p>WhatsApp</p>
+                            <p>+7 (924) 420-24-32</p>
+                            <p>Офис</p>
+                            <p>г. Владивосток, ул. Тополевая 6</p>
+                        </div>
+                    </div>
+                    <div class="form-block">
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" placeholder="Введите имя">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" placeholder="+7">
+                        <label for="message">Уточните свой вопрос</label>
+                        <textarea id="message"
+                            placeholder="Введите текст сообщения, укажите страну, марку и год машины."></textarea>
+
+                        <h6 class="tetxForConf">С правилами политики
+                            конфиденциальности ознакомлен</h6>
+                        <div class="Check">
+                            <label><input type="checkbox" id="privacy"></label>
+                        </div>
+
+                        <div class="cbtn-send">
+                            <button class="btn-send">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="SubsAndDont">
+                    <img src="{% static "image/BackSubAndDont.png" %}" alt="Подпишись">
+                    <div class="subsText">
+                        <svg width="582" height="121" viewBox="0 0 582 121" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0.802734 50V0.986328H25.1045V50H17.2432V7.99316H8.49316V50H0.802734ZM30.0264 38.2422V12.7441C30.0264 8.82487 31.0404 5.79427 33.0684 3.65234C35.0964 1.51042 37.9902 0.439453 41.75 0.439453C45.5098 0.439453 48.3923 1.51042 50.3975 3.65234C52.4255 5.79427 53.4395 8.82487 53.4395 12.7441V38.2422C53.4395 42.1615 52.4255 45.1921 50.3975 47.334C48.3923 49.4759 45.5098 50.5469 41.75 50.5469C37.9902 50.5469 35.0964 49.4759 33.0684 47.334C31.0404 45.1921 30.0264 42.1615 30.0264 38.2422ZM37.751 38.7207C37.751 41.9564 39.084 43.5742 41.75 43.5742C44.3932 43.5742 45.7148 41.9564 45.7148 38.7207V12.2656C45.7148 9.05273 44.3932 7.44629 41.75 7.44629C39.084 7.44629 37.751 9.05273 37.751 12.2656V38.7207ZM56.7549 56.5967V43.1299H59.7627C60.4007 42.3324 60.8564 41.4551 61.1299 40.498C61.4033 39.5182 61.5742 38.2764 61.6426 36.7725L63.3857 0.986328H84.9531V43.1299H88.3027V56.5967H80.6807V50H64.2402V56.5967H56.7549ZM67.043 43.1299H77.126V7.99316H70.5977L69.1963 36.6357C69.1051 38.4359 68.8887 39.8145 68.5469 40.7715C68.2051 41.7057 67.7038 42.4919 67.043 43.1299ZM92.6094 50V0.986328H116.911V50H109.05V7.99316H100.3V50H92.6094ZM122.482 50V0.986328H129.353V32.0215L132.155 21.2207L138.444 0.986328H146.921V50H139.982V15.4785L136.838 27.5439L130.378 50H122.482ZM152.355 50V0.986328H160.046V42.9932H166.711V0.986328H174.401V42.9932H181.066V0.986328H188.757V50H152.355ZM194.328 50V0.986328H201.198V32.0215L204.001 21.2207L210.29 0.986328H218.767V50H211.828V15.4785L208.684 27.5439L202.224 50H194.328ZM223.552 38.2422V12.7441C223.552 8.80208 224.532 5.77148 226.491 3.65234C228.451 1.51042 231.299 0.439453 235.036 0.439453C238.773 0.439453 241.621 1.51042 243.581 3.65234C245.541 5.77148 246.521 8.80208 246.521 12.7441V17.5293H239.24V12.2656C239.24 9.05273 237.919 7.44629 235.275 7.44629C232.609 7.44629 231.276 9.05273 231.276 12.2656V38.7207C231.276 41.9108 232.609 43.5059 235.275 43.5059C237.919 43.5059 239.24 41.9108 239.24 38.7207V31.7139H246.521V38.2422C246.521 42.1842 245.541 45.2262 243.581 47.3682C241.621 49.4873 238.773 50.5469 235.036 50.5469C231.299 50.5469 228.451 49.4873 226.491 47.3682C224.532 45.2262 223.552 42.1842 223.552 38.2422ZM251.203 50V0.986328H258.894V19.4092H262.551C266.356 19.4092 269.216 20.446 271.13 22.5195C273.067 24.5703 274.035 27.5667 274.035 31.5088V37.9004C274.035 41.8424 273.067 44.8503 271.13 46.9238C269.216 48.9746 266.356 50 262.551 50H251.203ZM258.894 42.9932H262.551C263.827 42.9932 264.772 42.6514 265.388 41.9678C266.003 41.2614 266.311 40.0651 266.311 38.3789V31.0303C266.311 29.3441 266.003 28.1592 265.388 27.4756C264.772 26.7692 263.827 26.416 262.551 26.416H258.894V42.9932Z"
+                                fill="#FD554B" />
+                            <path
+                                d="M289.484 50V0.986328H296.354V32.0215L299.157 21.2207L305.446 0.986328H313.923V50H306.984V15.4785L303.84 27.5439L297.38 50H289.484ZM330.227 50V0.986328H337.917V22.0068H346.667V0.986328H354.528V50H346.667V29.0137H337.917V50H330.227ZM360.1 50V0.986328H381.086V7.99316H367.79V21.665H378.352V28.6377H367.79V42.9932H381.086V50H360.1ZM394.484 0.986328H402.141L406.311 17.7344L408.703 29.2188L410.515 17.8027L414.035 0.986328H422.067L413.83 37.5244C413.443 39.3929 413.01 40.988 412.531 42.3096C412.053 43.6084 411.426 44.8161 410.651 45.9326C409.877 47.0264 408.942 47.8809 407.849 48.4961C406.755 49.1113 405.41 49.5671 403.815 49.8633C402.243 50.1367 400.397 50.2051 398.278 50.0684V43.1982C400.375 43.335 401.958 43.1299 403.029 42.583C404.1 42.0361 404.784 40.9196 405.08 39.2334L405.148 38.7891L394.484 0.986328ZM425.314 50V0.986328H449.616V50H441.755V7.99316H433.005V50H425.314ZM452.932 0.986328H460.588L464.758 17.7344L467.15 29.2188L468.962 17.8027L472.482 0.986328H480.515L472.277 37.5244C471.89 39.3929 471.457 40.988 470.979 42.3096C470.5 43.6084 469.873 44.8161 469.099 45.9326C468.324 47.0264 467.39 47.8809 466.296 48.4961C465.202 49.1113 463.858 49.5671 462.263 49.8633C460.69 50.1367 458.845 50.2051 456.726 50.0684V43.1982C458.822 43.335 460.406 43.1299 461.477 42.583C462.548 42.0361 463.231 40.9196 463.527 39.2334L463.596 38.7891L452.932 0.986328ZM483.112 38.2422V12.7441C483.112 8.80208 484.092 5.77148 486.052 3.65234C488.011 1.51042 490.86 0.439453 494.597 0.439453C498.334 0.439453 501.182 1.51042 503.142 3.65234C505.101 5.77148 506.081 8.80208 506.081 12.7441V17.5293H498.801V12.2656C498.801 9.05273 497.479 7.44629 494.836 7.44629C492.17 7.44629 490.837 9.05273 490.837 12.2656V38.7207C490.837 41.9108 492.17 43.5059 494.836 43.5059C497.479 43.5059 498.801 41.9108 498.801 38.7207V31.7139H506.081V38.2422C506.081 42.1842 505.101 45.2262 503.142 47.3682C501.182 49.4873 498.334 50.5469 494.597 50.5469C490.86 50.5469 488.011 49.4873 486.052 47.3682C484.092 45.2262 483.112 42.1842 483.112 38.2422ZM508.508 7.99316V0.986328H532.331V7.99316H524.265V50H516.574V7.99316H508.508ZM535.715 50V0.986328H542.585V32.0215L545.388 21.2207L551.677 0.986328H560.153V50H553.215V15.4785L550.07 27.5439L543.61 50H535.715ZM0.15332 108.242V82.7441C0.15332 78.8021 1.13314 75.7715 3.09277 73.6523C5.05241 71.5104 7.90072 70.4395 11.6377 70.4395C15.3747 70.4395 18.223 71.5104 20.1826 73.6523C22.1423 75.7715 23.1221 78.8021 23.1221 82.7441V87.5293H15.8418V82.2656C15.8418 79.0527 14.5202 77.4463 11.877 77.4463C9.21094 77.4463 7.87793 79.0527 7.87793 82.2656V108.721C7.87793 111.911 9.21094 113.506 11.877 113.506C14.5202 113.506 15.8418 111.911 15.8418 108.721V101.714H23.1221V108.242C23.1221 112.184 22.1423 115.226 20.1826 117.368C18.223 119.487 15.3747 120.547 11.6377 120.547C7.90072 120.547 5.05241 119.487 3.09277 117.368C1.13314 115.226 0.15332 112.184 0.15332 108.242ZM27.8047 120V70.9863H39.4258C43.3678 70.9863 46.2503 71.9092 48.0732 73.7549C49.9189 75.6006 50.8418 78.4375 50.8418 82.2656V84.0088C50.8418 89.0218 49.1784 92.3145 45.8516 93.8867C49.6797 95.3678 51.5938 98.8656 51.5938 104.38V108.379C51.5938 112.161 50.6025 115.044 48.6201 117.026C46.6377 119.009 43.7324 120 39.9043 120H27.8047ZM35.4951 112.993H39.9043C41.2487 112.993 42.2513 112.629 42.9121 111.899C43.5729 111.17 43.9033 109.928 43.9033 108.174V103.901C43.9033 101.668 43.516 100.119 42.7412 99.2529C41.9893 98.387 40.7246 97.9541 38.9473 97.9541H35.4951V112.993ZM35.4951 90.9473H38.5029C40.0296 90.9473 41.1803 90.5599 41.9551 89.7852C42.7298 88.9876 43.1172 87.6546 43.1172 85.7861V83.0518C43.1172 81.2972 42.8096 80.0212 42.1943 79.2236C41.5791 78.4033 40.5879 77.9932 39.2207 77.9932H35.4951V90.9473ZM55.5928 108.242V82.7441C55.5928 78.8249 56.6068 75.7943 58.6348 73.6523C60.6628 71.5104 63.5566 70.4395 67.3164 70.4395C71.0762 70.4395 73.9587 71.5104 75.9639 73.6523C77.9919 75.7943 79.0059 78.8249 79.0059 82.7441V108.242C79.0059 112.161 77.9919 115.192 75.9639 117.334C73.9587 119.476 71.0762 120.547 67.3164 120.547C63.5566 120.547 60.6628 119.476 58.6348 117.334C56.6068 115.192 55.5928 112.161 55.5928 108.242ZM63.3174 108.721C63.3174 111.956 64.6504 113.574 67.3164 113.574C69.9596 113.574 71.2812 111.956 71.2812 108.721V82.2656C71.2812 79.0527 69.9596 77.4463 67.3164 77.4463C64.6504 77.4463 63.3174 79.0527 63.3174 82.2656V108.721ZM83.9961 120V70.9863H90.8662V102.021L93.6689 91.2207L99.958 70.9863H108.435V120H101.496V85.4785L98.3516 97.5439L91.8916 120H83.9961ZM88.2686 60.083C88.3369 62.5439 89.0319 64.458 90.3535 65.8252C91.6979 67.1696 93.6803 67.8418 96.3008 67.8418C98.9896 67.8418 101.029 67.1582 102.419 65.791C103.809 64.4238 104.504 62.5212 104.504 60.083H99.8213C99.7301 61.3135 99.3997 62.1566 98.8301 62.6123C98.2604 63.068 97.4173 63.2959 96.3008 63.2959C95.2298 63.2959 94.4323 63.068 93.9082 62.6123C93.4069 62.1566 93.1107 61.3135 93.0195 60.083H88.2686ZM122.858 120L130.686 70.9863H141.965L149.792 120H142.033L140.7 111.113H131.232L129.899 120H122.858ZM132.224 104.448H139.641L135.949 79.668L132.224 104.448ZM153.381 120V70.9863H165.002C168.944 70.9863 171.826 71.9092 173.649 73.7549C175.495 75.6006 176.418 78.4375 176.418 82.2656V84.0088C176.418 89.0218 174.755 92.3145 171.428 93.8867C175.256 95.3678 177.17 98.8656 177.17 104.38V108.379C177.17 112.161 176.179 115.044 174.196 117.026C172.214 119.009 169.309 120 165.48 120H153.381ZM161.071 112.993H165.48C166.825 112.993 167.827 112.629 168.488 111.899C169.149 111.17 169.479 109.928 169.479 108.174V103.901C169.479 101.668 169.092 100.119 168.317 99.2529C167.565 98.387 166.301 97.9541 164.523 97.9541H161.071V112.993ZM161.071 90.9473H164.079C165.606 90.9473 166.757 90.5599 167.531 89.7852C168.306 88.9876 168.693 87.6546 168.693 85.7861V83.0518C168.693 81.2972 168.386 80.0212 167.771 79.2236C167.155 78.4033 166.164 77.9932 164.797 77.9932H161.071V90.9473ZM179.562 77.9932V70.9863H203.386V77.9932H195.319V120H187.629V77.9932H179.562ZM206.12 108.242V82.7441C206.12 78.8249 207.134 75.7943 209.162 73.6523C211.19 71.5104 214.084 70.4395 217.844 70.4395C221.604 70.4395 224.486 71.5104 226.491 73.6523C228.519 75.7943 229.533 78.8249 229.533 82.7441V108.242C229.533 112.161 228.519 115.192 226.491 117.334C224.486 119.476 221.604 120.547 217.844 120.547C214.084 120.547 211.19 119.476 209.162 117.334C207.134 115.192 206.12 112.161 206.12 108.242ZM213.845 108.721C213.845 111.956 215.178 113.574 217.844 113.574C220.487 113.574 221.809 111.956 221.809 108.721V82.2656C221.809 79.0527 220.487 77.4463 217.844 77.4463C215.178 77.4463 213.845 79.0527 213.845 82.2656V108.721ZM234.455 120V70.9863H245.153L250.827 105.781L256.091 70.9863H266.789V120H259.509V84.8633L254.177 120H246.896L241.154 85.3418V120H234.455ZM271.745 108.242V82.7441C271.745 78.8249 272.759 75.7943 274.787 73.6523C276.815 71.5104 279.709 70.4395 283.469 70.4395C287.229 70.4395 290.111 71.5104 292.116 73.6523C294.144 75.7943 295.158 78.8249 295.158 82.7441V108.242C295.158 112.161 294.144 115.192 292.116 117.334C290.111 119.476 287.229 120.547 283.469 120.547C279.709 120.547 276.815 119.476 274.787 117.334C272.759 115.192 271.745 112.161 271.745 108.242ZM279.47 108.721C279.47 111.956 280.803 113.574 283.469 113.574C286.112 113.574 287.434 111.956 287.434 108.721V82.2656C287.434 79.0527 286.112 77.4463 283.469 77.4463C280.803 77.4463 279.47 79.0527 279.47 82.2656V108.721ZM300.217 120V70.9863H321.784V77.9932H307.907V90.5371H312.385C316.213 90.5371 319.107 91.5739 321.066 93.6475C323.026 95.6982 324.006 98.6947 324.006 102.637V107.9C324.006 111.842 323.026 114.85 321.066 116.924C319.107 118.975 316.213 120 312.385 120H300.217ZM307.907 112.993H312.385C313.684 112.993 314.663 112.64 315.324 111.934C315.985 111.227 316.315 110.042 316.315 108.379V102.158C316.315 100.495 315.985 99.3099 315.324 98.6035C314.663 97.8971 313.684 97.5439 312.385 97.5439H307.907V112.993ZM329.201 120V70.9863H336.071V102.021L338.874 91.2207L345.163 70.9863H353.64V120H346.701V85.4785L343.557 97.5439L337.097 120H329.201ZM356.887 120.068V113.062C357.844 113.062 358.584 113.016 359.108 112.925C359.632 112.834 360.1 112.617 360.51 112.275C360.92 111.911 361.205 111.398 361.364 110.737C361.524 110.076 361.626 109.176 361.672 108.037L362.937 70.9863H384.675V120H376.848V77.9932H370.148L369.294 107.627C369.157 112.093 368.212 115.283 366.457 117.197C364.725 119.111 361.934 120.068 358.083 120.068H356.887ZM390.588 120V70.9863H398.278V89.4092H401.936C405.741 89.4092 408.601 90.446 410.515 92.5195C412.451 94.5703 413.42 97.5667 413.42 101.509V107.9C413.42 111.842 412.451 114.85 410.515 116.924C408.601 118.975 405.741 120 401.936 120H390.588ZM398.278 112.993H401.936C403.212 112.993 404.157 112.651 404.772 111.968C405.388 111.261 405.695 110.065 405.695 108.379V101.03C405.695 99.3441 405.388 98.1592 404.772 97.4756C404.157 96.7692 403.212 96.416 401.936 96.416H398.278V112.993ZM428.801 120V70.9863H439.499L445.173 105.781L450.437 70.9863H461.135V120H453.854V84.8633L448.522 120H441.242L435.5 85.3418V120H428.801ZM466.74 120V70.9863H487.727V77.9932H474.431V91.665H484.992V98.6377H474.431V112.993H487.727V120H466.74ZM492.033 91.7334V70.9863H499.724V91.084C499.724 92.6562 500.145 93.8525 500.988 94.6729C501.831 95.4932 502.902 95.9033 504.201 95.9033C505.454 95.9033 506.434 95.4704 507.141 94.6045C507.847 93.7386 508.2 92.4967 508.2 90.8789V70.9863H515.891V120H508.2V100.244C507.403 101.11 506.377 101.782 505.124 102.261C503.894 102.739 502.72 102.979 501.604 102.979C498.527 102.979 496.158 101.965 494.494 99.9365C492.854 97.9085 492.033 95.1742 492.033 91.7334ZM519.309 77.9932V70.9863H543.132V77.9932H535.065V120H527.375V77.9932H519.309ZM546.516 120V70.9863H554.206V89.4092H557.863C561.669 89.4092 564.528 90.446 566.442 92.5195C568.379 94.5703 569.348 97.5667 569.348 101.509V107.9C569.348 111.842 568.379 114.85 566.442 116.924C564.528 118.975 561.669 120 557.863 120H546.516ZM554.206 112.993H557.863C559.139 112.993 560.085 112.651 560.7 111.968C561.315 111.261 561.623 110.065 561.623 108.379V101.03C561.623 99.3441 561.315 98.1592 560.7 97.4756C560.085 96.7692 559.139 96.416 557.863 96.416H554.206V112.993ZM573.757 120V70.9863H581.447V120H573.757Z"
+                                fill="white" />
+                        </svg>
+                    </div>
+                    <div class="imgSub">
+                        <img src="{% static "image/instimg.png" %}" alt="SUB_AS">
+                    </div>
+
+                    <div class="iconminiSub">
+                        <div class="iconminiSub1">
+                            <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="44" height="44" rx="12" fill="white" fill-opacity="0.2" />
+                                <g clip-path="url(#clip0_1474_1358)">
+                                    <path
+                                        d="M22 34C28.6274 34 34 28.6274 34 22C34 15.3726 28.6274 10 22 10C15.3726 10 10 15.3726 10 22C10 28.6274 15.3726 34 22 34Z"
+                                        fill="#29AAEB" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M15.432 21.8739C18.9303 20.3498 21.263 19.345 22.4301 18.8595C25.7627 17.4734 26.4551 17.2326 26.9065 17.2247C27.0058 17.2229 27.2277 17.2475 27.3715 17.3642C27.4929 17.4627 27.5263 17.5958 27.5423 17.6892C27.5583 17.7826 27.5782 17.9953 27.5623 18.1616C27.3817 20.0591 26.6003 24.6638 26.2028 26.789C26.0346 27.6882 25.7034 27.9897 25.3827 28.0193C24.6858 28.0834 24.1567 27.5587 23.4817 27.1163C22.4256 26.424 21.8289 25.993 20.8037 25.3174C19.619 24.5367 20.387 24.1075 21.0622 23.4063C21.2389 23.2227 24.3093 20.43 24.3687 20.1766C24.3762 20.1449 24.3831 20.0268 24.3129 19.9645C24.2427 19.9021 24.1392 19.9234 24.0644 19.9404C23.9585 19.9644 22.2713 21.0796 19.0028 23.286C18.5238 23.6148 18.0901 23.775 17.7014 23.7666C17.2729 23.7574 16.4488 23.5244 15.8361 23.3252C15.0846 23.0809 14.4873 22.9518 14.5393 22.5369C14.5664 22.3208 14.864 22.0998 15.432 21.8739Z"
+                                        fill="white" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_1474_1358">
+                                        <rect width="24" height="24" fill="white" transform="translate(10 10)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="iconminiSub2">
+                            <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="44" height="44" rx="12" fill="white" fill-opacity="0.2" />
+                                <g clip-path="url(#clip0_1474_1370)">
+                                    <mask id="mask0_1474_1370" style="mask-type:luminance" maskUnits="userSpaceOnUse"
+                                        x="10" y="10" width="24" height="24">
+                                        <path d="M33.8815 10H10.1191V34H33.8815V10Z" fill="white" />
+                                    </mask>
+                                    <g mask="url(#mask0_1474_1370)">
+                                        <path
+                                            d="M10.1191 21.52C10.1191 16.0894 10.1191 13.3741 11.7895 11.6871C13.4599 10 16.1483 10 21.5251 10H22.4756C27.8524 10 30.5408 10 32.2112 11.6871C33.8815 13.3741 33.8815 16.0894 33.8815 21.52V22.48C33.8815 27.9106 33.8815 30.6259 32.2112 32.3129C30.5408 34 27.8524 34 22.4756 34H21.5251C16.1483 34 13.4599 34 11.7895 32.3129C10.1191 30.6259 10.1191 27.9106 10.1191 22.48V21.52Z"
+                                            fill="#0077FF" />
+                                        <path
+                                            d="M22.7626 27.2908C17.3467 27.2908 14.2576 23.5408 14.1289 17.3008H16.8418C16.9309 21.8808 18.9309 23.8208 20.515 24.2208V17.3008H23.0695V21.2507C24.6339 21.0808 26.2773 19.2808 26.8317 17.3008H29.3863C28.9605 19.7408 27.1783 21.5408 25.911 22.2808C27.1783 22.8808 29.2081 24.4508 29.9804 27.2908H27.1684C26.5645 25.3908 25.0596 23.9208 23.0695 23.7208V27.2908H22.7626Z"
+                                            fill="white" />
+                                    </g>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_1474_1370">
+                                        <rect width="24" height="24" fill="white" transform="translate(10 10)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="iconminiSub2">
+                            <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect width="44" height="44" rx="12" fill="white" fill-opacity="0.2" />
+                                <g clip-path="url(#clip0_1474_1384)">
+                                    <path
+                                        d="M22.0293 10H21.9746C15.3623 10 10.002 15.3604 10.002 21.9727V22.0273C10.002 28.6397 15.3623 34 21.9746 34H22.0293C28.6416 34 34.002 28.6397 34.002 22.0273V21.9727C34.002 15.3604 28.6416 10 22.0293 10Z"
+                                        fill="url(#paint0_radial_1474_1384)" />
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M25.7124 14.8828H18.2861C16.2345 14.8828 14.5654 16.5519 14.5654 18.6035V25.3975C14.5654 27.4491 16.2345 29.1182 18.2861 29.1182H25.7124C27.764 29.1182 29.4331 27.4491 29.4331 25.3975V18.6035C29.4331 16.5519 27.764 14.8828 25.7124 14.8828ZM15.878 18.6035C15.878 17.2758 16.9585 16.1954 18.2861 16.1954H25.7124C27.0401 16.1954 28.1206 17.2758 28.1206 18.6035V25.3975C28.1206 26.7252 27.0401 27.8056 25.7124 27.8056H18.2861C16.9585 27.8056 15.878 26.7252 15.878 25.3975V18.6035ZM21.9999 25.4608C23.9078 25.4608 25.4608 23.9086 25.4608 21.9999C25.4608 20.0912 23.9086 18.5391 21.9999 18.5391C20.0912 18.5391 18.5391 20.0912 18.5391 21.9999C18.5391 23.9086 20.0912 25.4608 21.9999 25.4608ZM21.9999 19.8524C23.1847 19.8524 24.1483 20.816 24.1483 22.0008C24.1483 23.1855 23.1847 24.1491 21.9999 24.1491C20.8152 24.1491 19.8516 23.1855 19.8516 22.0008C19.8516 20.816 20.8152 19.8524 21.9999 19.8524ZM26.714 18.1649C26.714 18.6795 26.2954 19.0974 25.7818 19.0974C25.2674 19.0974 24.8496 18.6795 24.8496 18.1649C24.8496 17.6503 25.2674 17.2324 25.7818 17.2324C26.2963 17.2324 26.714 17.6503 26.714 18.1649Z"
+                                        fill="white" />
+                                </g>
+                                <defs>
+                                    <radialGradient id="paint0_radial_1474_1384" cx="0" cy="0" r="1"
+                                        gradientUnits="userSpaceOnUse"
+                                        gradientTransform="translate(16.377 35.8485) rotate(-90) scale(23.7858 22.1226)">
+                                        <stop stop-color="#FFDD55" />
+                                        <stop offset="0.1" stop-color="#FFDD55" />
+                                        <stop offset="0.5" stop-color="#FF543E" />
+                                        <stop offset="1" stop-color="#C837AB" />
+                                    </radialGradient>
+                                    <clipPath id="clip0_1474_1384">
+                                        <rect width="24" height="24" fill="white" transform="translate(10 10)" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                    <div class="textminiSub">
+                        <div class="textminiSubOnce">
+                            <a href="https://t.me/ElliPhotos">Телеграм-канал <svg class="strelka" width="10" height="10"
+                                    viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.50028 1V7.5C9.50028 7.63261 9.4476 7.75979 9.35383 7.85355C9.26006 7.94732 9.13289 8 9.00028 8C8.86767 8 8.74049 7.94732 8.64672 7.85355C8.55296 7.75979 8.50028 7.63261 8.50028 7.5V2.20687L1.35403 9.35375C1.26021 9.44757 1.13296 9.50028 1.00028 9.50028C0.867596 9.50028 0.740348 9.44757 0.646528 9.35375C0.552708 9.25993 0.5 9.13268 0.5 9C0.5 8.86732 0.552708 8.74007 0.646528 8.64625L7.7934 1.5H2.50028C2.36767 1.5 2.24049 1.44732 2.14672 1.35355C2.05296 1.25979 2.00028 1.13261 2.00028 1C2.00028 0.867392 2.05296 0.740215 2.14672 0.646447C2.24049 0.552679 2.36767 0.5 2.50028 0.5H9.00028C9.13289 0.5 9.26006 0.552679 9.35383 0.646447C9.4476 0.740215 9.50028 0.867392 9.50028 1Z"
+                                        fill="white" fill-opacity="0.5" />
+                                </svg></a>
+                        </div>
+        
+        
+                        <div class="textminiSubOnce">
+                            <a href="https://vk.com/insanemode_vk">Вконтакте <svg class="strelka" width="10" height="10"
+                                    viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.50028 1V7.5C9.50028 7.63261 9.4476 7.75979 9.35383 7.85355C9.26006 7.94732 9.13289 8 9.00028 8C8.86767 8 8.74049 7.94732 8.64672 7.85355C8.55296 7.75979 8.50028 7.63261 8.50028 7.5V2.20687L1.35403 9.35375C1.26021 9.44757 1.13296 9.50028 1.00028 9.50028C0.867596 9.50028 0.740348 9.44757 0.646528 9.35375C0.552708 9.25993 0.5 9.13268 0.5 9C0.5 8.86732 0.552708 8.74007 0.646528 8.64625L7.7934 1.5H2.50028C2.36767 1.5 2.24049 1.44732 2.14672 1.35355C2.05296 1.25979 2.00028 1.13261 2.00028 1C2.00028 0.867392 2.05296 0.740215 2.14672 0.646447C2.24049 0.552679 2.36767 0.5 2.50028 0.5H9.00028C9.13289 0.5 9.26006 0.552679 9.35383 0.646447C9.4476 0.740215 9.50028 0.867392 9.50028 1Z"
+                                        fill="white" fill-opacity="0.5" />
+                                </svg> </a>
+                        </div>
+                        <div class="textminiSubOnce">
+                            <a href="https://vk.com/insanemode_vk">Instagram <svg class="strelka" width="10" height="10"
+                                    viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.50028 1V7.5C9.50028 7.63261 9.4476 7.75979 9.35383 7.85355C9.26006 7.94732 9.13289 8 9.00028 8C8.86767 8 8.74049 7.94732 8.64672 7.85355C8.55296 7.75979 8.50028 7.63261 8.50028 7.5V2.20687L1.35403 9.35375C1.26021 9.44757 1.13296 9.50028 1.00028 9.50028C0.867596 9.50028 0.740348 9.44757 0.646528 9.35375C0.552708 9.25993 0.5 9.13268 0.5 9C0.5 8.86732 0.552708 8.74007 0.646528 8.64625L7.7934 1.5H2.50028C2.36767 1.5 2.24049 1.44732 2.14672 1.35355C2.05296 1.25979 2.00028 1.13261 2.00028 1C2.00028 0.867392 2.05296 0.740215 2.14672 0.646447C2.24049 0.552679 2.36767 0.5 2.50028 0.5H9.00028C9.13289 0.5 9.26006 0.552679 9.35383 0.646447C9.4476 0.740215 9.50028 0.867392 9.50028 1Z"
+                                        fill="white" fill-opacity="0.5" />
+                                </svg> </a>
+                        </div>
+                    </div>
+        
+                </div>
+
+                
+
+
+</body>
+
+
+
+<div class="colorObj"></div>
+<footer class="footer">
+    <div class="AllObj">
+
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="{% static "image/image 2.png" %}">
+            </div>
+            <div class="footer-links">
+                <div class="catalog">
+                    <h4>КАТАЛОГ</h4>
+                    <ul class="footerAuto">
+                        <a class="nav-link" href="/catalog/">Авто из Японии</a>
+                    </ul>
+                </div>
+                <div class="company">
+                    <h4>КОМПАНИЯ</h4>
+                    <ul>
+                        <a href="/contact/">О компании</a>
+                        <a href="/Send/">Доставка</a>
+                        <a href="#Ots">Отзывы</a>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footFoot">
+
+            <p>© 2024 ООО «Правый руль» Автомобили под заказ из Кореи, Китая и Японии</p>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>Звонок по России бесплатный: </p>
+            <p class="NumFoot"><strong>8 800 550 48 32</strong></p>
+
+            <div class="social-icons">
+                <a href="https://t.me/ElliPhotos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z"
+                            fill="white" fill-opacity="0.3" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M5.43104 11.873C8.92928 10.3488 11.262 9.34403 12.4292 8.85856C15.7617 7.47245 16.4542 7.23167 16.9055 7.22372C17.0048 7.22197 17.2267 7.24657 17.3705 7.36323C17.4919 7.46174 17.5253 7.59481 17.5413 7.68821C17.5573 7.78161 17.5772 7.99436 17.5614 8.16061C17.3808 10.0581 16.5994 14.6628 16.2018 16.788C16.0336 17.6873 15.7024 17.9888 15.3817 18.0183C14.6849 18.0824 14.1557 17.5577 13.4808 17.1153C12.4246 16.423 11.8279 15.992 10.8028 15.3164C9.61798 14.5357 10.386 14.1066 11.0612 13.4053C11.2379 13.2217 14.3083 10.429 14.3677 10.1756C14.3752 10.144 14.3821 10.0258 14.3119 9.96348C14.2417 9.90112 14.1382 9.92244 14.0635 9.93941C13.9575 9.96345 12.2703 11.0786 9.00179 13.285C8.52287 13.6138 8.08909 13.7741 7.70043 13.7657C7.27197 13.7564 6.44778 13.5234 5.83508 13.3242C5.08358 13.08 4.4863 12.9508 4.53831 12.5359C4.5654 12.3199 4.86298 12.0989 5.43104 11.873Z"
+                            fill="white" />
+                    </svg>
+                </a>
+                <a href="https://t.me/ElliPhotos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <mask id="mask0_75_1013" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0"
+                            width="24" height="24">
+                            <path d="M23.8815 0H0.119141V24H23.8815V0Z" fill="white" />
+                        </mask>
+                        <g mask="url(#mask0_75_1013)">
+                            <path
+                                d="M0.119141 11.52C0.119141 6.08942 0.119141 3.37414 1.7895 1.68707C3.45987 0 6.14827 0 11.5251 0H12.4756C17.8524 0 20.5408 0 22.2112 1.68707C23.8815 3.37414 23.8815 6.08942 23.8815 11.52V12.48C23.8815 17.9106 23.8815 20.6259 22.2112 22.3129C20.5408 24 17.8524 24 12.4756 24H11.5251C6.14827 24 3.45987 24 1.7895 22.3129C0.119141 20.6259 0.119141 17.9106 0.119141 12.48V11.52Z"
+                                fill="white" fill-opacity="0.3" />
+                            <path
+                                d="M12.7626 17.2898C7.34671 17.2898 4.25763 13.5398 4.12891 7.2998H6.84179C6.93089 11.8798 8.93085 13.8198 10.515 14.2198V7.2998H13.0695V11.2498C14.6339 11.0798 16.2773 9.2798 16.8317 7.2998H19.3863C18.9605 9.73981 17.1783 11.5398 15.911 12.2798C17.1783 12.8798 19.2081 14.4498 19.9804 17.2898H17.1684C16.5645 15.3898 15.0596 13.9198 13.0695 13.7198V17.2898H12.7626Z"
+                                fill="white" />
+                        </g>
+                    </svg>
+                </a>
+                <a href="https://t.me/ElliPhotos"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.0293 0H11.9746C5.3623 0 0.00195312 5.36035 0.00195312 11.9727V12.0273C0.00195312 18.6397 5.3623 24 11.9746 24H12.0293C18.6416 24 24.002 18.6397 24.002 12.0273V11.9727C24.002 5.36035 18.6416 0 12.0293 0Z"
+                            fill="white" fill-opacity="0.3" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M15.7124 4.88281H8.28613C6.23449 4.88281 4.56543 6.55187 4.56543 8.60351V15.3975C4.56543 17.4491 6.23449 19.1182 8.28613 19.1182H15.7124C17.764 19.1182 19.4331 17.4491 19.4331 15.3975V8.60351C19.4331 6.55187 17.764 4.88281 15.7124 4.88281ZM5.87798 8.60351C5.87798 7.27583 6.95845 6.19536 8.28613 6.19536H15.7124C17.0401 6.19536 18.1206 7.27583 18.1206 8.60351V15.3975C18.1206 16.7252 17.0401 17.8056 15.7124 17.8056H8.28613C6.95845 17.8056 5.87798 16.7252 5.87798 15.3975V8.60351ZM11.9999 15.4608C13.9078 15.4608 15.4608 13.9086 15.4608 11.9999C15.4608 10.0912 13.9086 8.53906 11.9999 8.53906C10.0912 8.53906 8.53906 10.0912 8.53906 11.9999C8.53906 13.9086 10.0912 15.4608 11.9999 15.4608ZM11.9999 9.85245C13.1847 9.85245 14.1483 10.816 14.1483 12.0008C14.1483 13.1855 13.1847 14.1491 11.9999 14.1491C10.8152 14.1491 9.85161 13.1855 9.85161 12.0008C9.85161 10.816 10.8152 9.85245 11.9999 9.85245ZM16.714 8.16589C16.714 8.68048 16.2954 9.09838 15.7818 9.09838C15.2674 9.09838 14.8496 8.68048 14.8496 8.16589C14.8496 7.6513 15.2674 7.2334 15.7818 7.2334C16.2963 7.2334 16.714 7.6513 16.714 8.16589Z"
+                            fill="white" />
+                    </svg>
+                </a>
+
+
+            </div>
+            <div class="polcol">
+                <span>Политика конфиденциальности</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+
+
+</html>
