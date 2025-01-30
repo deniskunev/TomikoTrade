@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  my_postgres:
+    image: postgres:15
+    container_name: my_postgres
+    volumes:
+      - ~/.pg/pg_data/yt:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    env_file:
+      - .env
+  my_project:
+    image: mydocker:latest
+    container_name: mydocker
+    depends_on:
+      - my_postgres
+    volumes:
+      - static_volume:/yt/static
+      - media_volume:/yt/media
+    env_file:
+      - .env
+    command: >
+      bash -c "cd myproject  && python manage.py collectstatic --noinput && python manage.py migrate  && python manage.py runserver"
+
+volumes:
+  static_volume:
+  media_volume:
